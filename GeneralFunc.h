@@ -8,7 +8,7 @@
 #ifndef GENERALFUNC_H_
 #define GENERALFUNC_H_
 
-typedef enum { false , true } bool;
+typedef enum { false , true , neither } bool;
 
 
 void analogWrite(uint8_t pin, uint8_t val);

@@ -30,6 +30,7 @@ void FiniteState(state currentState){
 			WhereYouGo();
 			StateRobo.stateRobo = lookaround;
 			printString("init \r \n");
+			CurStateRobo.stateRobo = init;
 			break;
 		case lookaround :
 			if(CheckObs(CurrentPos.CurX, CurrentPos.CurY) == true){
@@ -39,25 +40,45 @@ void FiniteState(state currentState){
 			else{
 				StateRobo.stateRobo = endway;
 			}
+			CurStateRobo.stateRobo = lookaround;
 			break;
 		case step :
 			WhereYouGo();
 			printString("Step \r \n");
-			StateRobo.stateRobo = lookaround;
+			if(CurStateRobo.stateRobo == lookaround) StateRobo.stateRobo = lookaround;
+			if(CurStateRobo.stateRobo == endway) StateRobo.stateRobo = endway;
+			if(CurStateRobo.stateRobo == backhome) StateRobo.stateRobo = backhome;
+			CurStateRobo.stateRobo = step;
 			break;
 		case endway :
-
-			StateRobo.stateRobo = init;
+			bool imstuck = FindTheDest(CurrentPos.CurX, CurrentPos.CurY);
+			if (imstuck == false){
+				StateRobo.stateRobo = step;
+			}
+			else if (imstuck == neither){
+				StateRobo.stateRobo = backhome;
+			}
+			else if (imstuck == true){
+				StateRobo.stateRobo = lookaround;
+			}
+			CurStateRobo.stateRobo = endway;
 			break;
 		case backhome :
 			/*
 			 * This is very complicated, return to home position
 			 *
 			 */
-			StateRobo.stateRobo = null;
+			if (BackToHome(CurrentPos.CurX, CurrentPos.CurY) == false){
+				StateRobo.stateRobo = step;
+			}
+			else{
+				StateRobo.stateRobo = null;
+			}
+			CurStateRobo.stateRobo = backhome;
 			break;
 		case null :
-
+			stops();
+			StateRobo.stateRobo = null;
 			break;
 	}
 

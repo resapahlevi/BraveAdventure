@@ -17,10 +17,7 @@ void turnright(){
 	MotorBlock |= _BV(MotorIn3);
 	analogWrite(0x08,200);
 	analogWrite(0x10,0);
-	//_delay_ms(Delay_Turn);
 	stops();
-	//isExecute = true;
-	//forward();
 }
 
 void turnleft(){

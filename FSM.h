@@ -14,7 +14,10 @@ typedef enum {
 	init , lookaround , step , endway , backhome, null
 } state;
 
+uint16_t posDes;
+
 struct StateRobo {state stateRobo;} StateRobo;
+struct CurStateRobo {state stateRobo;} CurStateRobo;
 
 void FiniteState(state currentState);
 

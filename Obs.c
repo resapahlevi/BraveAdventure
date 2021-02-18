@@ -20,7 +20,7 @@ uint8_t PINtoInt(uint8_t Pin){
 }
 uint8_t WhereYouGo(){
 	if(isExecute == false){
-		printString("WhereYouGo");
+		printString("WhereYouGo : ");
 		if (DirToGo.goesto == positifX){
 			headdirect.px = head;
 			headdirect.py = tail;
