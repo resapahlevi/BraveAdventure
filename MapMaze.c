@@ -149,14 +149,20 @@ uint16_t * CheckMaze(uint16_t CurposX, uint16_t CurposY){
 		for(posy = 0  ; posy < SquareMaze ; posy++){
 			if(maze[posx][posy].isClear == true && maze[posx][posy].isDone == false) {
 				EuD = EcluideanDist(CurposX,CurposY,posx,posy);
+				printWord(EuD);
+				printString(" ");
+				printWord(minEuD);
+				printString(" | ");
 				if(EuD < minEuD){
 					pos[0] = posx;
 					pos[1] = posy;
 					minEuD = EuD;
 				}
+
 			}
 		}
 	}
+	printWord(pos);
 	return pos;
 }
 
@@ -181,6 +187,7 @@ void initMaze(){
 }
 
 bool TothatBox(uint16_t posX,uint16_t posY, uint16_t posXDes, uint16_t posYDes ){
+	printString("To that Box");
 	uint16_t Eclid = 999;
 	if(EcluideanDist(posXDes, posYDes, posX, posY) == 0){
 		if(isExecute == true){
@@ -344,8 +351,14 @@ bool TothatBox(uint16_t posX,uint16_t posY, uint16_t posXDes, uint16_t posYDes )
 }
 
 bool FindTheDest(uint16_t posX, uint16_t posY){
+	printString(" FindTheDest \n");
 	uint16_t *posDest;
 	posDest = CheckMaze(posX, posY);
+	printString(" posDest : ");
+	printWord(*(posDest + 0));
+	printString(" ");
+	printWord(*(posDest + 1));
+	printString("\n");
 	if ((posDest[0] == 0) && (posDest[1] == 0)){
 		return neither;
 	}

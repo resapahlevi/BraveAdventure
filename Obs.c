@@ -68,7 +68,7 @@ uint8_t WhereYouGo(){
 		if(DirToGo.gomotor == goBack){
 			bacrward();
 		}
-		if(DirToGo.gomotor == goNull){
+		if(DirToGo.gomotor == motorNull){
 			Realstops();
 		}
 

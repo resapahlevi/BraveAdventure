@@ -51,14 +51,17 @@ void FiniteState(state currentState){
 			CurStateRobo.stateRobo = step;
 			break;
 		case endway :
-			bool imstuck = FindTheDest(CurrentPos.CurX, CurrentPos.CurY);
+			imstuck = FindTheDest(CurrentPos.CurX, CurrentPos.CurY);
 			if (imstuck == false){
+				printString("FALSE");
 				StateRobo.stateRobo = step;
 			}
 			else if (imstuck == neither){
 				StateRobo.stateRobo = backhome;
+				printString("NEITHER");
 			}
 			else if (imstuck == true){
+				printString("TRUE");
 				StateRobo.stateRobo = lookaround;
 			}
 			CurStateRobo.stateRobo = endway;

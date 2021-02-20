@@ -10,6 +10,9 @@
 
 #define Delay_Motor 1000
 #define Delay_Turn 1500
+#define MotorSpeedRun 130
+#define MotorSpeedTurn 170
+#define MotorSpeedStop 0
 
 void turnright();
 void turnleft();

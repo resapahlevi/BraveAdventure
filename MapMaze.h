@@ -27,6 +27,7 @@ struct CurrentPos {
 }CurrentPos;
 
 bool isExecute;
+bool imstuck;
 
 struct ArrayProp maze[SquareMaze][SquareMaze];
 struct direction headdirect;
