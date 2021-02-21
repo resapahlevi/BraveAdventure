@@ -10,12 +10,12 @@
 #ifndef MAPMAZE_H_
 #define MAPMAZE_H_
 
-#define SquareMaze 36
+#define SquareMaze 60
 
 typedef enum {head, tail} direct;
 
 struct ArrayProp {
-	bool px, py, mx, my, isClear, isDone;
+	bool isClear, isDone;
 } ArrayProp;
 
 struct direction {

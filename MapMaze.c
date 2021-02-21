@@ -176,10 +176,6 @@ void initMaze(){
 	uint16_t c , r ;
 	for(c = 0 ; c < SquareMaze ; c++){
 		for(r = 0 ; r < SquareMaze ; r++){
-			maze[c][r].px = false;
-			maze[c][r].py = false;
-			maze[c][r].mx = false;
-			maze[c][r].my = false;
 			maze[c][r].isClear = false;
 			maze[c][r].isDone = false;
 		}
