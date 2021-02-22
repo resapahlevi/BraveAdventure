@@ -14,29 +14,46 @@
 bool CheckObs(uint16_t posX,uint16_t posY ){
 	if(((posX+1) <= SquareMaze) || ((posY+1) <= SquareMaze) || ((posX - 1) >= 0) || ((posY -1 ) >= 0)){
 		if(isExecute == true){
+			isExecute = false;
 			printString("CheckOBS \r \n");
 			if (headdirect.px == head){
 				printString("Head px ");
 				if((readObs(ObstacleB0) == PINtoInt(ObstacleB0)) & (maze[posX - 1][posY].isClear == false)){
-					UpdateArray((posX - 1), posY);
+					B++;
+					if(B == Persquare) {
+						UpdateArray((posX - 1), posY);
+						B = 0;
+					}
 					DirToGo.goesto = negatifX;
 					DirToGo.gomotor = goBack;
 					printString(" B \r \n");
 				}
 				if((readObs(ObstacleL) == PINtoInt(ObstacleL)) & (maze[posX][posY + 1].isClear == false)){
-					UpdateArray(posX, (posY + 1));
+					L++;
+					if (L == Persquare){
+						UpdateArray(posX, (posY + 1));
+						L = 0;
+					}
 					DirToGo.goesto = positifY;
 					DirToGo.gomotor = goLeft;
 					printString(" L ");
 				}
 				if((readObs(ObstacleR) == PINtoInt(ObstacleR)) & (maze[posX][posY - 1].isClear == false)){
-					UpdateArray(posX, (posY - 1));
+					R++;
+					if (R == Persquare){
+						UpdateArray(posX, (posY - 1));
+						R = 0;
+					}
 					DirToGo.goesto = negatifY;
 					DirToGo.gomotor = goRight;
 					printString(" R ");
 				}
 				if((readObs(ObstacleF0) == PINtoInt(ObstacleF0)) & (maze[posX + 1][posY].isClear == false)){
-					UpdateArray((posX + 1), posY);
+					F++;
+					if (F == Persquare){
+						UpdateArray((posX + 1), posY);
+						F = 0;
+					}
 					DirToGo.goesto = positifX;
 					DirToGo.gomotor = goForward;
 					printString(" F \r \n");
@@ -46,25 +63,41 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 			else if (headdirect.py == head){
 				printString("Head py ");
 				if((readObs(ObstacleB0) == PINtoInt(ObstacleB0)) & (maze[posX][posY - 1].isClear == false)){
-					UpdateArray(posX, (posY - 1));
+					B++;
+					if( B == Persquare){
+						UpdateArray(posX, (posY - 1));
+						B = 0;
+					}
 					DirToGo.goesto = negatifY;
 					DirToGo.gomotor = goBack;
 					printString(" B \r \n");
 				}
 				if((readObs(ObstacleL) == PINtoInt(ObstacleL)) & (maze[posX - 1][posY].isClear == false)){
-					UpdateArray((posX -1), posY);
+					L++;
+					if ( L == Persquare){
+						UpdateArray((posX -1), posY);
+						L = 0;
+					}
 					DirToGo.goesto = negatifX;
 					DirToGo.gomotor = goLeft;
 					printString(" L ");
 				}
 				if((readObs(ObstacleR) == PINtoInt(ObstacleR)) & (maze[posX + 1][posY].isClear == false)){
-					UpdateArray((posX + 1), posY);
+					R++;
+					if( R == Persquare){
+						UpdateArray((posX + 1), posY);
+						R = 0;
+					}
 					DirToGo.goesto = positifX;
 					DirToGo.gomotor = goRight;
 					printString(" R ");
 				}
 				if((readObs(ObstacleF0) == PINtoInt(ObstacleF0)) & (maze[posX][posY + 1].isClear == false)){
-					UpdateArray(posX, (posY + 1));
+					F++;
+					if(F == Persquare){
+						UpdateArray(posX, (posY + 1));
+						F = 0;
+					}
 					DirToGo.goesto = positifY;
 					DirToGo.gomotor = goForward;
 					printString(" F \r\n ");
@@ -74,25 +107,41 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 			else if (headdirect.mx == head){
 				printString("Head mx ");
 				if((readObs(ObstacleB0) == PINtoInt(ObstacleB0)) & (maze[posX + 1][posY].isClear == false)){
-					UpdateArray((posX + 1), posY);
+					B++;
+					if(B == Persquare){
+						UpdateArray((posX + 1), posY);
+						B = 0 ;
+					}
 					DirToGo.goesto = positifX;
 					DirToGo.gomotor = goBack;
 					printString(" B \r \n");
 				}
 				if((readObs(ObstacleL) == PINtoInt(ObstacleL)) & (maze[posX][posY - 1].isClear == false)){
-					UpdateArray(posX, (posY - 1));
+					L++;
+					if(L == Persquare){
+						UpdateArray(posX, (posY - 1));
+						L = 0;
+					}
 					DirToGo.goesto = negatifY;
 					DirToGo.gomotor = goLeft;
 					printString(" L ");
 				}
 				if((readObs(ObstacleR) == PINtoInt(ObstacleR)) & (maze[posX][posY + 1].isClear == false)){
-					UpdateArray(posX, (posY + 1));
+					R++;
+					if( R == Persquare){
+						UpdateArray(posX, (posY + 1));
+						R = 0 ;
+					}
 					DirToGo.goesto = positifY;
 					DirToGo.gomotor = goRight;
 					printString(" R ");
 				}
 				if((readObs(ObstacleF0) == PINtoInt(ObstacleF0)) & (maze[posX - 1][posY].isClear == false)){
-					UpdateArray((posX - 1), posY);
+					F++;
+					if(F == Persquare){
+						UpdateArray((posX - 1), posY);
+						F = 0;
+					}
 					DirToGo.goesto = negatifX;
 					DirToGo.gomotor = goForward;
 					printString(" F \r\n ");
@@ -102,25 +151,41 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 			else if (headdirect.my == head){
 				printString("Head my ");
 				if((readObs(ObstacleB0) == PINtoInt(ObstacleB0)) & (maze[posX][posY + 1].isClear == false)){
-					UpdateArray(posX, (posY + 1));
+					B++;
+					if(B == Persquare){
+						UpdateArray(posX, (posY + 1));
+						B = 0;
+					}
 					DirToGo.goesto = positifY;
 					DirToGo.gomotor = goBack;
 					printString(" B \r \n");
 				}
 				if((readObs(ObstacleL) == PINtoInt(ObstacleL)) & (maze[posX + 1][posY].isClear == false)){
-					UpdateArray((posX + 1), posY);
+					L++;
+					if(L == Persquare){
+						UpdateArray((posX + 1), posY);
+						L = 0;
+					}
 					DirToGo.goesto = positifX;
 					DirToGo.gomotor = goLeft;
 					printString(" L ");
 				}
 				if((readObs(ObstacleR) == PINtoInt(ObstacleR)) & (maze[posX - 1][posY].isClear == false)){
-					UpdateArray((posX - 1), posY);
+					R++;
+					if(R == Persquare){
+						UpdateArray((posX - 1), posY);
+						R = 0;
+					}
 					DirToGo.goesto = negatifX;
 					DirToGo.gomotor = goRight;
 					printString(" R ");
 				}
 				if((readObs(ObstacleF0) == PINtoInt(ObstacleF0)) & (maze[posX][posY - 1].isClear == false)){
-					UpdateArray(posX, (posY - 1));
+					F++;
+					if(F == Persquare){
+						UpdateArray(posX, (posY - 1));
+						F = 0;
+					}
 					DirToGo.goesto = negatifY;
 					DirToGo.gomotor = goForward;
 					printString(" F \r\n ");

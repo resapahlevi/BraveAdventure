@@ -10,6 +10,7 @@
 #include "GeneralFunc.h"
 #include <util/delay.h>
 #include "MapMaze.h"
+#include "USART.h"
 
 void turnright(){
 	printString("Turn Right \r\n");
@@ -17,6 +18,7 @@ void turnright(){
 	MotorBlock |= _BV(MotorIn3);
 	analogWrite(0x08,MotorSpeedTurn);
 	analogWrite(0x10,MotorSpeedStop);
+	//_delay_ms(Delay_Turn);
 	stops();
 }
 
@@ -26,6 +28,7 @@ void turnleft(){
 	MotorBlock |= _BV(MotorIn1) ;
 	analogWrite(0x10,MotorSpeedTurn);
 	analogWrite(0x08,MotorSpeedStop);
+	//_delay_ms(Delay_Turn);
 	stops();
 }
 
@@ -35,6 +38,7 @@ void forward(){
 	MotorBlock |= _BV(MotorIn1) | _BV(MotorIn3) ;
 	analogWrite(0x08,MotorSpeedRunR);
 	analogWrite(0x10,MotorSpeedRunL);
+	//_delay_ms(Delay_Motor);
 	stops();
 }
 
@@ -44,11 +48,11 @@ void bacrward(){
 	MotorBlock |= _BV(MotorIn2) | _BV(MotorIn4) ;
 	analogWrite(0x08,MotorSpeedRunR);
 	analogWrite(0x10,MotorSpeedRunL);
+	//_delay_ms(Delay_Motor);
 	stops();
 }
 
 void stops(){
-  _delay_ms(Delay_Motor);
   printString("Stops Motor \r\n");
   isExecute = true;
 }

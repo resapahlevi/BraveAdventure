@@ -11,6 +11,7 @@
 #define MAPMAZE_H_
 
 #define SquareMaze 60
+#define Persquare 1000
 
 typedef enum {head, tail} direct;
 
@@ -28,6 +29,7 @@ struct CurrentPos {
 
 bool isExecute;
 bool imstuck;
+uint16_t F, L, R, B;
 
 struct ArrayProp maze[SquareMaze][SquareMaze];
 struct direction headdirect;

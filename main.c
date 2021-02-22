@@ -28,6 +28,10 @@ void initRobot(){
 	headdirect.mx 			= tail;
 	headdirect.my 			= tail;
 	isExecute 				= true;
+	F						= 0;
+	R						= 0;
+	L						= 0;
+	B						= 0;
 }
 
 int main(){

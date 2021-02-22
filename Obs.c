@@ -10,6 +10,7 @@
 #include "Obs.h"
 #include "MapMaze.h"
 #include "MotorDriver.h"
+#include "USART.h"
 
 uint8_t readObs(uint8_t ObsPin){
 	return (ObsBlock & (1 << ObsPin));
