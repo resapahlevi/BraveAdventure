@@ -17,17 +17,17 @@
 
 
 void initRobot(){
-	StateRobo.stateRobo = init;
-	CurStateRobo.stateRobo = init;
-	CurrentPos.CurX = SquareMaze / 2;
-	CurrentPos.CurY = SquareMaze / 2;
-	DirToGo.goesto = positifX;
-	DirToGo.gomotor = goForward;
-	headdirect.px = head;
-	headdirect.py = tail;
-	headdirect.mx = tail;
-	headdirect.my = tail;
-	isExecute = true;
+	StateRobo.stateRobo 	= init;
+	CurStateRobo.stateRobo 	= init;
+	CurrentPos.CurX 		= SquareMaze / 2;
+	CurrentPos.CurY 		= SquareMaze / 2;
+	DirToGo.goesto 			= positifX;
+	DirToGo.gomotor 		= goForward;
+	headdirect.px 			= head;
+	headdirect.py 			= tail;
+	headdirect.mx 			= tail;
+	headdirect.my 			= tail;
+	isExecute 				= true;
 }
 
 int main(){

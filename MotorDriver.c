@@ -33,8 +33,8 @@ void forward(){
 	printString("Forward \r\n");
 	MotorBlock &= ~(_BV(MotorIn2)) | ~(_BV(MotorIn4));
 	MotorBlock |= _BV(MotorIn1) | _BV(MotorIn3) ;
-	analogWrite(0x08,MotorSpeedRun);
-	analogWrite(0x10,MotorSpeedRun);
+	analogWrite(0x08,MotorSpeedRunR);
+	analogWrite(0x10,MotorSpeedRunL);
 	stops();
 }
 
@@ -42,8 +42,8 @@ void bacrward(){
 	printString("Backward \r\n");
 	MotorBlock &= ~(_BV(MotorIn1)) | ~(_BV(MotorIn3));
 	MotorBlock |= _BV(MotorIn2) | _BV(MotorIn4) ;
-	analogWrite(0x08,MotorSpeedRun);
-	analogWrite(0x10,MotorSpeedRun);
+	analogWrite(0x08,MotorSpeedRunR);
+	analogWrite(0x10,MotorSpeedRunL);
 	stops();
 }
 

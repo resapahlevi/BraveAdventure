@@ -20,6 +20,7 @@
 #include "Obs.h"
 #include "USART.h"
 #include "util/delay.h"
+#include "MotorDriver.h"
 
 void FiniteState(state currentState){
 
@@ -52,17 +53,17 @@ void FiniteState(state currentState){
 			break;
 		case endway :
 			imstuck = FindTheDest(CurrentPos.CurX, CurrentPos.CurY);
-			if (imstuck == false){
+			if (imstuck == 5){
 				printString("FALSE");
 				StateRobo.stateRobo = step;
 			}
-			else if (imstuck == neither){
-				StateRobo.stateRobo = backhome;
-				printString("NEITHER");
-			}
-			else if (imstuck == true){
+			else if (imstuck == 7){
 				printString("TRUE");
 				StateRobo.stateRobo = lookaround;
+			}
+			else if (imstuck == 3){
+				StateRobo.stateRobo = backhome;
+				printString("NEITHER");
 			}
 			CurStateRobo.stateRobo = endway;
 			break;
@@ -80,7 +81,7 @@ void FiniteState(state currentState){
 			CurStateRobo.stateRobo = backhome;
 			break;
 		case null :
-			stops();
+			Realstops();
 			StateRobo.stateRobo = null;
 			break;
 	}

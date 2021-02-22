@@ -349,9 +349,9 @@ void FiniteState(state currentState){
      2a2:	b9 01       	movw	r22, r18
      2a4:	0e 94 57 0d 	call	0x1aae	; 0x1aae <FindTheDest>
      2a8:	80 93 75 1f 	sts	0x1F75, r24	; 0x801f75 <imstuck>
-			if (imstuck == false){
+			if (imstuck == 5){
      2ac:	80 91 75 1f 	lds	r24, 0x1F75	; 0x801f75 <imstuck>
-     2b0:	88 23       	and	r24, r24
+     2b0:	85 30       	cpi	r24, 0x05	; 5
      2b2:	41 f4       	brne	.+16     	; 0x2c4 <FiniteState+0x118>
 				printString("FALSE");
      2b4:	81 e2       	ldi	r24, 0x21	; 33
@@ -362,30 +362,30 @@ void FiniteState(state currentState){
      2be:	80 93 74 1f 	sts	0x1F74, r24	; 0x801f74 <StateRobo>
      2c2:	17 c0       	rjmp	.+46     	; 0x2f2 <FiniteState+0x146>
 			}
-			else if (imstuck == neither){
+			else if (imstuck == 7){
      2c4:	80 91 75 1f 	lds	r24, 0x1F75	; 0x801f75 <imstuck>
-     2c8:	82 30       	cpi	r24, 0x02	; 2
+     2c8:	87 30       	cpi	r24, 0x07	; 7
      2ca:	41 f4       	brne	.+16     	; 0x2dc <FiniteState+0x130>
-				StateRobo.stateRobo = backhome;
-     2cc:	84 e0       	ldi	r24, 0x04	; 4
-     2ce:	80 93 74 1f 	sts	0x1F74, r24	; 0x801f74 <StateRobo>
-				printString("NEITHER");
-     2d2:	87 e2       	ldi	r24, 0x27	; 39
-     2d4:	92 e0       	ldi	r25, 0x02	; 2
-     2d6:	0e 94 86 10 	call	0x210c	; 0x210c <printString>
+				printString("TRUE");
+     2cc:	87 e2       	ldi	r24, 0x27	; 39
+     2ce:	92 e0       	ldi	r25, 0x02	; 2
+     2d0:	0e 94 86 10 	call	0x210c	; 0x210c <printString>
+				StateRobo.stateRobo = lookaround;
+     2d4:	81 e0       	ldi	r24, 0x01	; 1
+     2d6:	80 93 74 1f 	sts	0x1F74, r24	; 0x801f74 <StateRobo>
      2da:	0b c0       	rjmp	.+22     	; 0x2f2 <FiniteState+0x146>
 			}
-			else if (imstuck == true){
+			else if (imstuck == 3){
      2dc:	80 91 75 1f 	lds	r24, 0x1F75	; 0x801f75 <imstuck>
-     2e0:	81 30       	cpi	r24, 0x01	; 1
+     2e0:	83 30       	cpi	r24, 0x03	; 3
      2e2:	39 f4       	brne	.+14     	; 0x2f2 <FiniteState+0x146>
-				printString("TRUE");
-     2e4:	8f e2       	ldi	r24, 0x2F	; 47
-     2e6:	92 e0       	ldi	r25, 0x02	; 2
-     2e8:	0e 94 86 10 	call	0x210c	; 0x210c <printString>
-				StateRobo.stateRobo = lookaround;
-     2ec:	81 e0       	ldi	r24, 0x01	; 1
-     2ee:	80 93 74 1f 	sts	0x1F74, r24	; 0x801f74 <StateRobo>
+				StateRobo.stateRobo = backhome;
+     2e4:	84 e0       	ldi	r24, 0x04	; 4
+     2e6:	80 93 74 1f 	sts	0x1F74, r24	; 0x801f74 <StateRobo>
+				printString("NEITHER");
+     2ea:	8c e2       	ldi	r24, 0x2C	; 44
+     2ec:	92 e0       	ldi	r25, 0x02	; 2
+     2ee:	0e 94 86 10 	call	0x210c	; 0x210c <printString>
 			}
 			CurStateRobo.stateRobo = endway;
      2f2:	83 e0       	ldi	r24, 0x03	; 3
@@ -3686,7 +3686,7 @@ bool FindTheDest(uint16_t posX, uint16_t posY){
     1b0a:	8b ec       	ldi	r24, 0xCB	; 203
     1b0c:	92 e0       	ldi	r25, 0x02	; 2
     1b0e:	0e 94 86 10 	call	0x210c	; 0x210c <printString>
-	if ((posDest[0] == 0) && (posDest[1] == 0)){
+	if ((*(posDest + 0) == 0) && (*(posDest + 1) == 0)){
     1b12:	89 81       	ldd	r24, Y+1	; 0x01
     1b14:	9a 81       	ldd	r25, Y+2	; 0x02
     1b16:	fc 01       	movw	r30, r24

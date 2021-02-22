@@ -9,9 +9,10 @@
 #include "PinDefined.h"
 #include "Obs.h"
 #include <math.h>
+#include "USART.h"
 
 bool CheckObs(uint16_t posX,uint16_t posY ){
-	if(((posX+1) <= SquareMaze) & ((posY+1) <= SquareMaze)){
+	if(((posX+1) <= SquareMaze) || ((posY+1) <= SquareMaze) || ((posX - 1) >= 0) || ((posY -1 ) >= 0)){
 		if(isExecute == true){
 			printString("CheckOBS \r \n");
 			if (headdirect.px == head){
@@ -40,6 +41,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.gomotor = goForward;
 					printString(" F \r \n");
 				}
+				return true;
 			}
 			else if (headdirect.py == head){
 				printString("Head py ");
@@ -67,6 +69,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.gomotor = goForward;
 					printString(" F \r\n ");
 				}
+				return true;
 			}
 			else if (headdirect.mx == head){
 				printString("Head mx ");
@@ -94,6 +97,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.gomotor = goForward;
 					printString(" F \r\n ");
 				}
+				return true;
 			}
 			else if (headdirect.my == head){
 				printString("Head my ");
@@ -121,21 +125,185 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.gomotor = goForward;
 					printString(" F \r\n ");
 				}
+				return true;
 			}
-			else {
-				DirToGo.goesto = goNull;
-				DirToGo.gomotor = goBack;
-				return false;
-			}
-			isExecute = false;
 		}
-		return true;
 	}
 	else {
-		DirToGo.goesto = goNull;
-		DirToGo.gomotor = goNull;
-		return false;
+		if(
+			((posX+1) > SquareMaze) &
+			((posY+1) > SquareMaze) &
+			(headdirect.px == head) &
+			(readObs(ObstacleR) == PINtoInt(ObstacleR)) &
+			(maze[posX][posY - 1].isClear == false)
+			){
+			DirToGo.goesto = negatifY;
+			DirToGo.gomotor = goRight;
+			return true;
+		}
+		else if(
+				((posX+1) > SquareMaze) &
+				((posY+1) > SquareMaze) &
+				(headdirect.py == head) &
+				(readObs(ObstacleL) == PINtoInt(ObstacleL)) &
+				(maze[posX -1][posY].isClear == false)
+				){
+			DirToGo.goesto = negatifX;
+			DirToGo.gomotor = goLeft;
+			return true;
+		}
+		else if(
+				((posX - 1) < 0) &
+				((posY+1) > SquareMaze) &
+				(headdirect.mx == head) &
+				(readObs(ObstacleL) == PINtoInt(ObstacleL)) &
+				(maze[posX][posY - 1].isClear == false)
+				){
+			DirToGo.goesto = negatifY;
+			DirToGo.gomotor = goLeft;
+			return true;
+		}
+		else if(
+				((posX - 1) < 0) &
+				((posY+1) > SquareMaze) &
+				(headdirect.py == head) &
+				(readObs(ObstacleR) == PINtoInt(ObstacleR)) &
+				(maze[posX + 1][posY].isClear == false)
+				){
+			DirToGo.goesto = positifX;
+			DirToGo.gomotor = goRight;
+			return true;
+		}
+		else if(
+				((posX - 1) < 0) &
+				((posY - 1) < 0) &
+				(headdirect.my == head) &
+				(readObs(ObstacleL) == PINtoInt(ObstacleL)) &
+				(maze[posX + 1][posY].isClear == false)
+				){
+			DirToGo.goesto = positifX;
+			DirToGo.gomotor = goLeft;
+			return true;
+		}
+		else if(
+				((posX - 1) < 0) &
+				((posY - 1) < 0) &
+				(headdirect.mx == head) &
+				(readObs(ObstacleR) == PINtoInt(ObstacleR)) &
+				(maze[posX][posY + 1].isClear == false)
+				){
+			DirToGo.goesto = positifY;
+			DirToGo.gomotor = goRight;
+			return true;
+		}
+		else if(
+				((posX + 1) > SquareMaze) &
+				((posY - 1) < 0) &
+				(headdirect.px == head) &
+				(readObs(ObstacleL) == PINtoInt(ObstacleL)) &
+				(maze[posX][posY + 1].isClear == false)
+				){
+			DirToGo.goesto = positifY;
+			DirToGo.gomotor = goLeft;
+			return true;
+		}
+		else if(
+				((posX + 1) > SquareMaze) &
+				((posY - 1) < 0) &
+				(headdirect.my == head) &
+				(readObs(ObstacleL) == PINtoInt(ObstacleL)) &
+				(maze[posX - 1][posY].isClear == false)
+				){
+			DirToGo.goesto = negatifX;
+			DirToGo.gomotor = goLeft;
+			return true;
+		}
+		else if(
+				((posX+1) > SquareMaze) &
+				(headdirect.px == head) &
+				(readObs(ObstacleR) == PINtoInt(ObstacleR)) &
+				(maze[posX][posY - 1].isClear == false)
+				){
+			DirToGo.goesto = negatifY;
+			DirToGo.gomotor = goRight;
+			return true;
+		}
+		else if(
+				((posX+1) > SquareMaze) &
+				(headdirect.px == head) &
+				(readObs(ObstacleL) == PINtoInt(ObstacleL)) &
+				(maze[posX][posY + 1].isClear == false)
+				){
+			DirToGo.goesto = positifY;
+			DirToGo.gomotor = goLeft;
+			return true;
+		}
+		else if(
+				((posY+1) > SquareMaze) &
+				(headdirect.py == head) &
+				(readObs(ObstacleR) == PINtoInt(ObstacleR)) &
+				(maze[posX + 1][posY].isClear == false)
+				){
+			DirToGo.goesto = positifX;
+			DirToGo.gomotor = goRight;
+			return true;
+		}
+		else if(
+				((posY+1) > SquareMaze) &
+				(headdirect.py == head) &
+				(readObs(ObstacleL) == PINtoInt(ObstacleL)) &
+				(maze[posX - 1][posY].isClear == false)
+				){
+			DirToGo.goesto = negatifX;
+			DirToGo.gomotor = goLeft;
+			return true;
+		}
+		else if(
+				((posX- 1) < 0) &
+				(headdirect.mx == head) &
+				(readObs(ObstacleR) == PINtoInt(ObstacleR)) &
+				(maze[posX][posY + 1].isClear == false)
+				){
+			DirToGo.goesto = positifY;
+			DirToGo.gomotor = goRight;
+			return true;
+		}
+		else if(
+				((posX- 1) < 0) &
+				(headdirect.mx == head) &
+				(readObs(ObstacleL) == PINtoInt(ObstacleL)) &
+				(maze[posX][posY - 1].isClear == false)
+				){
+			DirToGo.goesto = negatifY;
+			DirToGo.gomotor = goLeft;
+			return true;
+		}
+		else if(
+				((posY- 1) < 0) &
+				(headdirect.my == head) &
+				(readObs(ObstacleR) == PINtoInt(ObstacleR)) &
+				(maze[posX - 1][posY].isClear == false)
+				){
+			DirToGo.goesto = negatifX;
+			DirToGo.gomotor = goRight;
+			return true;
+		}
+		else if(
+				((posY- 1) < 0) &
+				(headdirect.my == head) &
+				(readObs(ObstacleL) == PINtoInt(ObstacleL)) &
+				(maze[posX + 1][posY].isClear == false)
+				){
+			DirToGo.goesto = positifX;
+			DirToGo.gomotor = goLeft;
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
+	isExecute = false;
+	return false;
 }
 
 bool UpdateArray(uint16_t posX, uint16_t posY) {
@@ -162,7 +330,7 @@ uint16_t * CheckMaze(uint16_t CurposX, uint16_t CurposY){
 			}
 		}
 	}
-	printWord(pos);
+	printWord(*(pos + 0));
 	return pos;
 }
 
@@ -355,7 +523,7 @@ bool FindTheDest(uint16_t posX, uint16_t posY){
 	printString(" ");
 	printWord(*(posDest + 1));
 	printString("\n");
-	if ((posDest[0] == 0) && (posDest[1] == 0)){
+	if ((*(posDest + 0) == 0) && (*(posDest + 1) == 0)){
 		return neither;
 	}
 	if( TothatBox(posX, posY, posDest[0], posDest[1]) == false){
@@ -365,7 +533,7 @@ bool FindTheDest(uint16_t posX, uint16_t posY){
 }
 
 bool BackToHome(uint16_t posX, uint16_t posY){
-	if( TothatBox(posX, posY, SquareMaze / 2, SquareMaze / 2) == false){
+	if( TothatBox(posX, posY, (SquareMaze / 2), (SquareMaze / 2)) == false){
 		return false;
 	}
 	else return true;
