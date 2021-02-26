@@ -14,8 +14,8 @@ void MotorPinInit(){
 
 
 void ObstacleInit(){
-	DataDirObs &= (DataDirObs & 0x00) | ~(_BV(ObstacleF0)) | ~(_BV(ObstacleR)) | ~(_BV(ObstacleL)) | ~(_BV(ObstacleB0)) ; // set as input set as 0
-	PORTC |= _BV(ObstacleF0) | _BV(ObstacleR) | _BV(ObstacleL) | _BV(ObstacleB0) ; // set pull up set as 1
+	DataDirObs &= (DataDirObs & 0x00) | ~(_BV(ObstacleF0)) | ~(_BV(ObstacleR)) | ~(_BV(ObstacleL)) | ~(_BV(ObstacleB0)) | ~(_BV(ObstacleF1)) | ~(_BV(ObstacleF2)); // set as input set as 0
+	PORTC |= _BV(ObstacleF0) | _BV(ObstacleF1) | _BV(ObstacleF2) | _BV(ObstacleR) | _BV(ObstacleL) | _BV(ObstacleB0) ; // set pull up set as 1
 }
 
 void ExtInit(){
