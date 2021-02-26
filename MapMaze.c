@@ -58,6 +58,16 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.gomotor = goForward;
 					printString(" F \r \n");
 				}
+				if(readObs(ObstacleF1) != PINtoInt(ObstacleF1)){
+					DirToGo.goesto = positifX;
+					DirToGo.gomotor = goLeft;
+					printString(" F \r \n");
+				}
+				if(readObs(ObstacleF2) != PINtoInt(ObstacleF2)){
+					DirToGo.goesto = positifX;
+					DirToGo.gomotor = goRight;
+					printString(" F \r \n");
+				}
 				return true;
 			}
 			else if (headdirect.py == head){
@@ -101,6 +111,16 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.goesto = positifY;
 					DirToGo.gomotor = goForward;
 					printString(" F \r\n ");
+				}
+				if(readObs(ObstacleF1) != PINtoInt(ObstacleF1)){
+					DirToGo.goesto = positifY;
+					DirToGo.gomotor = goLeft;
+					printString(" F \r \n");
+				}
+				if(readObs(ObstacleF2) != PINtoInt(ObstacleF2)){
+					DirToGo.goesto = positifY;
+					DirToGo.gomotor = goRight;
+					printString(" F \r \n");
 				}
 				return true;
 			}
@@ -146,6 +166,16 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.gomotor = goForward;
 					printString(" F \r\n ");
 				}
+				if(readObs(ObstacleF1) != PINtoInt(ObstacleF1)){
+					DirToGo.goesto = negatifX;
+					DirToGo.gomotor = goLeft;
+					printString(" F \r \n");
+				}
+				if(readObs(ObstacleF2) != PINtoInt(ObstacleF2)){
+					DirToGo.goesto = negatifX;
+					DirToGo.gomotor = goRight;
+					printString(" F \r \n");
+				}
 				return true;
 			}
 			else if (headdirect.my == head){
@@ -189,6 +219,16 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.goesto = negatifY;
 					DirToGo.gomotor = goForward;
 					printString(" F \r\n ");
+				}
+				if(readObs(ObstacleF1) != PINtoInt(ObstacleF1)){
+					DirToGo.goesto = negatifY;
+					DirToGo.gomotor = goLeft;
+					printString(" F \r \n");
+				}
+				if(readObs(ObstacleF2) != PINtoInt(ObstacleF2)){
+					DirToGo.goesto = negatifY;
+					DirToGo.gomotor = goRight;
+					printString(" F \r \n");
 				}
 				return true;
 			}
