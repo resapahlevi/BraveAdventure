@@ -1,5 +1,5 @@
 FSM.o: ../FSM.c ../FSM.h ../GeneralFunc.h ../MapMaze.h ../Obs.h \
- ../USART.h
+ ../USART.h ../MotorDriver.h
 
 ../FSM.h:
 
@@ -10,3 +10,5 @@ FSM.o: ../FSM.c ../FSM.h ../GeneralFunc.h ../MapMaze.h ../Obs.h \
 ../Obs.h:
 
 ../USART.h:
+
+../MotorDriver.h:

@@ -28,11 +28,11 @@
 #define EncoderB 	2
 #define DataDirObs	DDRC
 #define ObstacleF0	PC0
-#define ObstacleF1	PF1 // Not in Use
+#define ObstacleF1	PC4
+#define ObstacleF2	PC5
 #define ObstacleL	PC1
 #define ObstacleR	PC2
 #define ObstacleB0	PC3
-#define ObstacleB1	PF5 // Not in Use
 
 /*
  * Description and defined pin for the 10-dof Sensor
