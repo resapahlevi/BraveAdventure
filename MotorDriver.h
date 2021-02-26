@@ -10,8 +10,8 @@
 
 #define Delay_Motor 800
 #define Delay_Turn 1300
-#define MotorSpeedRunR 130
-#define MotorSpeedRunL 150
+#define MotorSpeedRunR 120
+#define MotorSpeedRunL 140
 #define MotorSpeedTurn 170
 #define MotorSpeedStop 0
 
