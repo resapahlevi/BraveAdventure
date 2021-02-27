@@ -10,7 +10,7 @@
 #include "Obs.h"
 #include "MapMaze.h"
 #include "MotorDriver.h"
-//#include "USART.h"
+#include "USART.h"
 
 uint8_t readObs(uint8_t ObsPin){
 	return (ObsBlock & (1 << ObsPin));
@@ -55,7 +55,7 @@ uint8_t WhereYouGo(){
 			headdirect.mx = tail;
 			headdirect.my = tail;
 		}
-
+		resetcountermaze();
 		if(DirToGo.gomotor == goForward){
 			forward();
 		}
