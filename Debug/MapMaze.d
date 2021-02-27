@@ -1,5 +1,5 @@
 MapMaze.o: ../MapMaze.c ../MapMaze.h ../GeneralFunc.h ../PinDefined.h \
- ../Obs.h ../USART.h
+ ../Obs.h
 
 ../MapMaze.h:
 
@@ -8,5 +8,3 @@ MapMaze.o: ../MapMaze.c ../MapMaze.h ../GeneralFunc.h ../PinDefined.h \
 ../PinDefined.h:
 
 ../Obs.h:
-
-../USART.h:

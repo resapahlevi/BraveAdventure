@@ -10,7 +10,7 @@
 #include "Obs.h"
 #include "MapMaze.h"
 #include "MotorDriver.h"
-#include "USART.h"
+//#include "USART.h"
 
 uint8_t readObs(uint8_t ObsPin){
 	return (ObsBlock & (1 << ObsPin));
@@ -21,7 +21,6 @@ uint8_t PINtoInt(uint8_t Pin){
 }
 uint8_t WhereYouGo(){
 	if(isExecute == false){
-		printString("WhereYouGo : ");
 		if (DirToGo.goesto == positifX){
 			headdirect.px = head;
 			headdirect.py = tail;

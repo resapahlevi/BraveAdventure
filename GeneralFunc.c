@@ -8,7 +8,7 @@
 #include <avr/io.h>
 #include "GeneralFunc.h"
 #include "PinDefined.h"
-#include "USART.h"
+//#include "USART.h"
 
 void analogWrite(uint8_t pin, uint8_t val){
 
@@ -16,11 +16,9 @@ void analogWrite(uint8_t pin, uint8_t val){
  switch(pin){
   	  case(0x08):
 		OCR4A = val;
-  	  	printString("4A \r\n");
   	  break;
   	  case(0x10):
 		OCR4B = val;
-  	  	printString("4B \r\n");
   	  break;
   	  case(0x11):
 		OCR4A = val;

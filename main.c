@@ -42,7 +42,6 @@ int main(){
 	pwm_init();
 	adc_init();
 	initUSART();
-	printString("I'am The Brave Adventure V.01.00 \r \n");
 
 	while(1){
 		FiniteState(StateRobo.stateRobo);

@@ -1,5 +1,5 @@
 Obs.o: ../Obs.c ../PinDefined.h ../GeneralFunc.h ../Obs.h ../MapMaze.h \
- ../MotorDriver.h ../USART.h
+ ../MotorDriver.h
 
 ../PinDefined.h:
 
@@ -10,5 +10,3 @@ Obs.o: ../Obs.c ../PinDefined.h ../GeneralFunc.h ../Obs.h ../MapMaze.h \
 ../MapMaze.h:
 
 ../MotorDriver.h:
-
-../USART.h:

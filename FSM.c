@@ -18,7 +18,7 @@
 #include "FSM.h"
 #include "MapMaze.h"
 #include "Obs.h"
-#include "USART.h"
+//#include "USART.h"
 #include "util/delay.h"
 #include "MotorDriver.h"
 
@@ -30,13 +30,11 @@ void FiniteState(state currentState){
 			CheckObs(CurrentPos.CurX, CurrentPos.CurY);
 			WhereYouGo();
 			StateRobo.stateRobo = lookaround;
-			printString("init \r \n");
 			CurStateRobo.stateRobo = init;
 			break;
 		case lookaround :
 			if(CheckObs(CurrentPos.CurX, CurrentPos.CurY) == true){
 				StateRobo.stateRobo = step;
-				printString("Lookaround \r \n");
 			}
 			else{
 				StateRobo.stateRobo = endway;
@@ -45,7 +43,6 @@ void FiniteState(state currentState){
 			break;
 		case step :
 			WhereYouGo();
-			printString("Step \r \n");
 			if(CurStateRobo.stateRobo == lookaround) StateRobo.stateRobo = lookaround;
 			if(CurStateRobo.stateRobo == endway) StateRobo.stateRobo = endway;
 			if(CurStateRobo.stateRobo == backhome) StateRobo.stateRobo = backhome;
@@ -53,17 +50,14 @@ void FiniteState(state currentState){
 			break;
 		case endway :
 			imstuck = FindTheDest(CurrentPos.CurX, CurrentPos.CurY);
-			if (imstuck == 5){
-				printString("FALSE");
+			if (imstuck == false){
 				StateRobo.stateRobo = step;
 			}
-			else if (imstuck == 7){
-				printString("TRUE");
+			else if (imstuck == true){
 				StateRobo.stateRobo = lookaround;
 			}
-			else if (imstuck == 3){
+			else if (imstuck == neither){
 				StateRobo.stateRobo = backhome;
-				printString("NEITHER");
 			}
 			CurStateRobo.stateRobo = endway;
 			break;
