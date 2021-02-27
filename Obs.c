@@ -55,7 +55,6 @@ uint8_t WhereYouGo(){
 			headdirect.mx = tail;
 			headdirect.my = tail;
 		}
-		resetcountermaze();
 		if(DirToGo.gomotor == goForward){
 			forward();
 		}

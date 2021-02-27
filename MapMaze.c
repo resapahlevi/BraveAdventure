@@ -25,6 +25,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.goesto = negatifX;
 					DirToGo.gomotor = goBack;
 				}
+				else {
+					B = 0;
+				}
 				if((readObs(ObstacleL) == PINtoInt(ObstacleL)) & (maze[posX][posY + 1].isClear == false)){
 					L++;
 					if (L == Persquare){
@@ -33,6 +36,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					}
 					DirToGo.goesto = positifY;
 					DirToGo.gomotor = goLeft;
+				}
+				else{
+					L = 0;
 				}
 				if((readObs(ObstacleR) == PINtoInt(ObstacleR)) & (maze[posX][posY - 1].isClear == false)){
 					R++;
@@ -43,6 +49,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.goesto = negatifY;
 					DirToGo.gomotor = goRight;
 				}
+				else{
+					R = 0;
+				}
 				if((readObs(ObstacleF0) == PINtoInt(ObstacleF0)) & (maze[posX + 1][posY].isClear == false)){
 					F++;
 					if (F == Persquare){
@@ -51,6 +60,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					}
 					DirToGo.goesto = positifX;
 					DirToGo.gomotor = goForward;
+				}
+				else{
+					resetcountermaze();
 				}
 				if(readObs(ObstacleF1) != PINtoInt(ObstacleF1)){
 					DirToGo.goesto = positifX;
@@ -72,6 +84,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.goesto = negatifY;
 					DirToGo.gomotor = goBack;
 				}
+				else{
+					B = 0;
+				}
 				if((readObs(ObstacleL) == PINtoInt(ObstacleL)) & (maze[posX - 1][posY].isClear == false)){
 					L++;
 					if ( L == Persquare){
@@ -80,6 +95,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					}
 					DirToGo.goesto = negatifX;
 					DirToGo.gomotor = goLeft;
+				}
+				else{
+					L = 0;
 				}
 				if((readObs(ObstacleR) == PINtoInt(ObstacleR)) & (maze[posX + 1][posY].isClear == false)){
 					R++;
@@ -90,6 +108,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.goesto = positifX;
 					DirToGo.gomotor = goRight;
 				}
+				else{
+					R = 0;
+				}
 				if((readObs(ObstacleF0) == PINtoInt(ObstacleF0)) & (maze[posX][posY + 1].isClear == false)){
 					F++;
 					if(F == Persquare){
@@ -98,6 +119,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					}
 					DirToGo.goesto = positifY;
 					DirToGo.gomotor = goForward;
+				}
+				else{
+					resetcountermaze();
 				}
 				if(readObs(ObstacleF1) != PINtoInt(ObstacleF1)){
 					DirToGo.goesto = positifY;
@@ -119,6 +143,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.goesto = positifX;
 					DirToGo.gomotor = goBack;
 				}
+				else{
+					B = 0;
+				}
 				if((readObs(ObstacleL) == PINtoInt(ObstacleL)) & (maze[posX][posY - 1].isClear == false)){
 					L++;
 					if(L == Persquare){
@@ -127,6 +154,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					}
 					DirToGo.goesto = negatifY;
 					DirToGo.gomotor = goLeft;
+				}
+				else{
+					L = 0;
 				}
 				if((readObs(ObstacleR) == PINtoInt(ObstacleR)) & (maze[posX][posY + 1].isClear == false)){
 					R++;
@@ -137,6 +167,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.goesto = positifY;
 					DirToGo.gomotor = goRight;
 				}
+				else{
+					R = 0;
+				}
 				if((readObs(ObstacleF0) == PINtoInt(ObstacleF0)) & (maze[posX - 1][posY].isClear == false)){
 					F++;
 					if(F == Persquare){
@@ -145,6 +178,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					}
 					DirToGo.goesto = negatifX;
 					DirToGo.gomotor = goForward;
+				}
+				else{
+					resetcountermaze();
 				}
 				if(readObs(ObstacleF1) != PINtoInt(ObstacleF1)){
 					DirToGo.goesto = negatifX;
@@ -166,6 +202,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.goesto = positifY;
 					DirToGo.gomotor = goBack;
 				}
+				else{
+					B = 0;
+				}
 				if((readObs(ObstacleL) == PINtoInt(ObstacleL)) & (maze[posX + 1][posY].isClear == false)){
 					L++;
 					if(L == Persquare){
@@ -174,6 +213,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					}
 					DirToGo.goesto = positifX;
 					DirToGo.gomotor = goLeft;
+				}
+				else{
+					L = 0;
 				}
 				if((readObs(ObstacleR) == PINtoInt(ObstacleR)) & (maze[posX - 1][posY].isClear == false)){
 					R++;
@@ -184,6 +226,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					DirToGo.goesto = negatifX;
 					DirToGo.gomotor = goRight;
 				}
+				else{
+					R = 0;
+				}
 				if((readObs(ObstacleF0) == PINtoInt(ObstacleF0)) & (maze[posX][posY - 1].isClear == false)){
 					F++;
 					if(F == Persquare){
@@ -192,6 +237,9 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 					}
 					DirToGo.goesto = negatifY;
 					DirToGo.gomotor = goForward;
+				}
+				else{
+					resetcountermaze();
 				}
 				if(readObs(ObstacleF1) != PINtoInt(ObstacleF1)){
 					DirToGo.goesto = negatifY;
@@ -215,6 +263,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 			){
 			DirToGo.goesto = negatifY;
 			DirToGo.gomotor = goRight;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -226,6 +275,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = negatifX;
 			DirToGo.gomotor = goLeft;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -237,6 +287,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = negatifY;
 			DirToGo.gomotor = goLeft;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -248,6 +299,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = positifX;
 			DirToGo.gomotor = goRight;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -259,6 +311,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = positifX;
 			DirToGo.gomotor = goLeft;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -270,6 +323,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = positifY;
 			DirToGo.gomotor = goRight;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -281,6 +335,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = positifY;
 			DirToGo.gomotor = goLeft;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -292,6 +347,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = negatifX;
 			DirToGo.gomotor = goLeft;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -302,6 +358,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = negatifY;
 			DirToGo.gomotor = goRight;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -312,6 +369,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = positifY;
 			DirToGo.gomotor = goLeft;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -322,6 +380,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = positifX;
 			DirToGo.gomotor = goRight;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -332,6 +391,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = negatifX;
 			DirToGo.gomotor = goLeft;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -342,6 +402,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = positifY;
 			DirToGo.gomotor = goRight;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -352,6 +413,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = negatifY;
 			DirToGo.gomotor = goLeft;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -362,6 +424,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = negatifX;
 			DirToGo.gomotor = goRight;
+			resetcountermaze();
 			return true;
 		}
 		else if(
@@ -372,6 +435,7 @@ bool CheckObs(uint16_t posX,uint16_t posY ){
 				){
 			DirToGo.goesto = positifX;
 			DirToGo.gomotor = goLeft;
+			resetcountermaze();
 			return true;
 		}
 		else{
