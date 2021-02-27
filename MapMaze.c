@@ -9,7 +9,7 @@
 #include "PinDefined.h"
 #include "Obs.h"
 #include <math.h>
-//#include "USART.h"
+#include "USART.h"
 
 bool CheckObs(uint16_t posX,uint16_t posY ){
 	if(((posX+1) <= SquareMaze) || ((posY+1) <= SquareMaze) || ((posX - 1) >= 0) || ((posY -1 ) >= 0)){
@@ -580,5 +580,13 @@ bool BackToHome(uint16_t posX, uint16_t posY){
 		return false;
 	}
 	else return true;
+}
+
+void resetcountermaze(void)
+{
+	F	= 0;
+	R	= 0;
+	L	= 0;
+	B	= 0;
 }
 
