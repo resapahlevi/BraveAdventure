@@ -1,5 +1,5 @@
 MotorDriver.o: ../MotorDriver.c ../PinDefined.h ../MotorDriver.h \
- ../GeneralFunc.h ../MapMaze.h
+ ../GeneralFunc.h ../MapMaze.h ../USART.h
 
 ../PinDefined.h:
 
@@ -8,3 +8,5 @@ MotorDriver.o: ../MotorDriver.c ../PinDefined.h ../MotorDriver.h \
 ../GeneralFunc.h:
 
 ../MapMaze.h:
+
+../USART.h:
