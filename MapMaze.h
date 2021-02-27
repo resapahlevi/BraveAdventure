@@ -41,5 +41,6 @@ uint16_t EcluideanDist(uint16_t CurposX, uint16_t CurposY, uint16_t posX, uint16
 void initMaze();
 bool FindTheDest(uint16_t posX, uint16_t posY);
 bool BackToHome(uint16_t posX, uint16_t posY);
+void resetcountermaze(void);
 
 #endif /* MAPMAZE_H_ */
