@@ -10,7 +10,7 @@
 #include "GeneralFunc.h"
 #include <util/delay.h>
 #include "MapMaze.h"
-//#include "USART.h"
+#include "USART.h"
 
 void turnright(){
 	MotorBlock &= ~(_BV(MotorIn1)) | ~(_BV(MotorIn2)) | ~(_BV(MotorIn4));
