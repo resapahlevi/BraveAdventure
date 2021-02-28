@@ -30,56 +30,56 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-Brave_Adventurer.lss \
+BraveAdventure.lss \
 
 FLASH_IMAGE += \
-Brave_Adventurer.hex \
+BraveAdventure.hex \
 
 EEPROM_IMAGE += \
-Brave_Adventurer.eep \
+BraveAdventure.eep \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: Brave_Adventurer.elf secondary-outputs
+all: BraveAdventure.elf secondary-outputs
 
 # Tool invocations
-Brave_Adventurer.elf: $(OBJS) $(USER_OBJS)
+BraveAdventure.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,Brave_Adventurer.map -mmcu=atmega2560 -o "Brave_Adventurer.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-gcc -Wl,-Map,BraveAdventure.map -mmcu=atmega2560 -o "BraveAdventure.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-Brave_Adventurer.lss: Brave_Adventurer.elf
+BraveAdventure.lss: BraveAdventure.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S Brave_Adventurer.elf  >"Brave_Adventurer.lss"
+	-avr-objdump -h -S BraveAdventure.elf  >"BraveAdventure.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Brave_Adventurer.hex: Brave_Adventurer.elf
+BraveAdventure.hex: BraveAdventure.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Brave_Adventurer.elf  "Brave_Adventurer.hex"
+	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex BraveAdventure.elf  "BraveAdventure.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Brave_Adventurer.eep: Brave_Adventurer.elf
+BraveAdventure.eep: BraveAdventure.elf
 	@echo 'Create eeprom image (ihex format)'
-	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Brave_Adventurer.elf  "Brave_Adventurer.eep"
+	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex BraveAdventure.elf  "BraveAdventure.eep"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: Brave_Adventurer.elf
+sizedummy: BraveAdventure.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega2560 Brave_Adventurer.elf
+	-avr-size --format=avr --mcu=atmega2560 BraveAdventure.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(EEPROM_IMAGE)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) Brave_Adventurer.elf
+	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(EEPROM_IMAGE)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) BraveAdventure.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)

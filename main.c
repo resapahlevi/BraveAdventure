@@ -32,6 +32,12 @@ void initRobot(){
 	R						= 0;
 	L						= 0;
 	B						= 0;
+	movestage				= false;
+	mazeEdge.q1q2			= false;
+	mazeEdge.q2q3			= false;
+	mazeEdge.q3q4			= false;
+	mazeEdge.q4q1			= false;
+
 }
 
 int main(){

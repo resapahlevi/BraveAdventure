@@ -43,9 +43,9 @@ void FiniteState(state currentState){
 			break;
 		case step :
 			WhereYouGo();
-			if(CurStateRobo.stateRobo == lookaround) StateRobo.stateRobo = lookaround;
-			if(CurStateRobo.stateRobo == endway) StateRobo.stateRobo = endway;
-			if(CurStateRobo.stateRobo == backhome) StateRobo.stateRobo = backhome;
+			if(CurStateRobo.stateRobo == lookaround) 	StateRobo.stateRobo = lookaround;
+			if(CurStateRobo.stateRobo == endway) 		StateRobo.stateRobo = endway;
+			if(CurStateRobo.stateRobo == backhome) 		StateRobo.stateRobo = backhome;
 			CurStateRobo.stateRobo = step;
 			break;
 		case endway :

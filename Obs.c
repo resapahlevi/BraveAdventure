@@ -26,28 +26,44 @@ uint8_t WhereYouGo(){
 			headdirect.py = tail;
 			headdirect.mx = tail;
 			headdirect.my = tail;
-			CurrentPos.CurX = CurrentPos.CurX + 1 ;
+			if(movestage == true){
+				CurrentPos.CurX = CurrentPos.CurX + 1 ;
+				resetcountermaze();
+				movestage = false;
+			}
 		}
 		else if (DirToGo.goesto == positifY){
 			headdirect.px = tail;
 			headdirect.py = head;
 			headdirect.mx = tail;
 			headdirect.my = tail;
-			CurrentPos.CurY = CurrentPos.CurY + 1 ;
+			if(movestage == true){
+				CurrentPos.CurY = CurrentPos.CurY + 1 ;
+				resetcountermaze();
+				movestage = false;
+			}
 		}
 		else if (DirToGo.goesto == negatifX){
 			headdirect.px = tail;
 			headdirect.py = tail;
 			headdirect.mx = head;
 			headdirect.my = tail;
-			CurrentPos.CurX = CurrentPos.CurX - 1 ;
+			if(movestage == true){
+				CurrentPos.CurX = CurrentPos.CurX - 1 ;
+				resetcountermaze();
+				movestage = false;
+			}
 		}
 		else if (DirToGo.goesto == negatifY){
 			headdirect.px = tail;
 			headdirect.py = tail;
 			headdirect.mx = tail;
 			headdirect.my = head;
-			CurrentPos.CurY = CurrentPos.CurY - 1 ;
+			if(movestage == true){
+				CurrentPos.CurY = CurrentPos.CurY - 1 ;
+				resetcountermaze();
+				movestage = false;
+			}
 		}
 		else {
 			headdirect.px = tail;
